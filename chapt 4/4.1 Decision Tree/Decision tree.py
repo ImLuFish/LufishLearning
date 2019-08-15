@@ -37,8 +37,8 @@ class DecisionTree:
                 now_RSS = 0
                 for item in set(df[attr]):
                     now_RSS += self.reg_err(df[df[attr] == item])
-                    if len(df[df[attr] == item]) < ops[1]:
-                        now_RSS += np.inf
+                    if len(df[df[attr] == item]) == 1:
+                        continue
                 if len(set(df[attr])) == 1:
                     now_RSS += np.inf
                 if (now_RSS < min_RSS):
